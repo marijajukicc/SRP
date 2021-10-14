@@ -1,2 +1,2 @@
 # SRP
-Izvještaji s laboratorijskih vježbi sigurnost računala i podataka
+Izvještaji s laboratorijskih vježbi Sigurnost računala i podataka
