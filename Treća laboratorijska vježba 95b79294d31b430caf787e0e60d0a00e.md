@@ -19,13 +19,11 @@ U prvome izazovu smo trebali zaštititi integritet poruke koristeći MAC(Message
 ```python
 from cryptography.hazmat.primitives import hashes,hmac
 
-def main():
+if __name__ == "__main__":
     with open("file.txt", "rb") as file:
         content = file.read()
         print(content)
 
-if __name__ == "__main__":
-    main()
 ```
 
 1. Stvorili smo funkciju za generiranje MAC vrijednosti 
