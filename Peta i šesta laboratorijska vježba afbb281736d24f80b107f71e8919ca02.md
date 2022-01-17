@@ -102,3 +102,14 @@ Kreiramo neki file s tekstom na sljedeći način:
 ```bash
 echo "Hello world" > security.txt
 ```
+Naredbama ls -l ili getfacl prikazujemo informacije o direktoriju i datotekama
+```bash
+alice3@DESKTOP-7Q0BASR:~/SRP$ getfacl security.txt
+file: security.txt
+owner: alice3
+group: alice3
+user::rw-
+group::rw-
+other::r--
+```
+Za file security.txt alice3 moze čitati i pisati unutar njega kao i user. Dok svi ostali korisnici mogu samo čitati taj file
