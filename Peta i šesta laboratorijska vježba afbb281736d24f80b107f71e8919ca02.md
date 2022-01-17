@@ -81,4 +81,24 @@ S obzirom na ograničeno vrijeme nismo stigli napraviti offline password guessin
 
 ## Šesta vježba
 
-Kroz ovu vježbu smo učili kako upravljati korisničkim računima na linuxu, odnosno radili smo kontrolu pristupu.
+Kroz ovu vježbu smo učili kako upravljati korisničkim računima na linuxu, odnosno istraživali smo kontrolu pristupu.
+
+U Linux-u svaka datoteka ili program (binary executable file) ima vlasnika (user or owner). Svakom korisniku pridjeljen je jedinstveni identifikator User ID (UID). Svaki korisnik mora pripadati barem jednoj grupi (group), pri čemu više korisnika može dijeliti istu grupu. Linux grupe također imaju jedinstvene identifikatore Group ID (GID).
+S id provjeravamo identifikatore uid i gid za korisnika te pripadnost grupama.
+Kad koristimo sudo to nam daje administratorska prava tj. s time dokazujemo da pripadamo grupi sudo.
+```bash
+sudo adduser alice3
+sudo adduser bob3
+```
+S ovom komandom kreiramo nove korisnike koji pripadaju određenim grupama i imaju određeni uid i guid.
+Da bi ušli u ove korisničke račune koristimo sljedeću naredbu:
+```bash
+sudo - alice3
+exit
+```
+Exit koristimo unutar shella korisnika za vraćanje na shell s administratorskim ovlastima.
+Česte linux komande su mkdir za kreiranje novih direktorija, cd za ulazak ili cd.. za izlazak iz nekog direktorija, za ispis nekog filea koristimo cat.
+Kreiramo neki file s tekstom na sljedeći način:
+```bash
+echo "Hello world" > security.txt
+```
