@@ -112,4 +112,10 @@ user::rw-
 group::rw-
 other::r--
 ```
-Za file security.txt alice3 moze čitati i pisati unutar njega kao i user. Dok svi ostali korisnici mogu samo čitati taj file
+Za file security.txt alice3 može čitati i pisati unutar njega kao i user. Dok svi ostali korisnici mogu samo čitati taj file.
+Za mijenjanje dopuštenih prava koristimo se naredbom chmod možemo raditi sljedeće: želimo li dodati ili maknuti pravo(+ ili -) te ovisno koje pravo(r(ead),w(rite),e(x)ecute).
+Primjer kako to funkcionira u kodu:
+```bash
+# Remove both (u)ser and (g)roup (w)rite permission
+chmod ug-w security.txt
+```
