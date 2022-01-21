@@ -119,3 +119,29 @@ Primjer kako to funkcionira u kodu:
 # Remove both (u)ser and (g)roup (w)rite permission
 chmod ug-w security.txt
 ```
+Nakon isprobavanja chmod naredbe radili smo inspekciju i promjene ACL(Access Control Lists) resursa pomoću getfacl i setfacl. To smo pokazali na primjeru security.txt u čiju smo ACL datoteku dodali Boba kao novog korisnika s r(ead) ovlasti.
+```bash
+setfacl -m u:bob:r security.txt
+```
+Za ukloniti Boba da nema pristup security.txt radi se na sljedeći način:
+```bash
+setfacl -x u:bob security.txt
+```
+Osim kontrole pristupa s ACL-om i dodavanjem pristupa zasebnim korisnicima, pristup možemo dati i grupama iz kojih se mogu ukloniti ili dodati korisnici.Svi pripadnici neke grupe imaju specifičnu ulogu odnosno zadatke koje mogu i trebaju obavljati nad datotekama.
+Grupe se kreiraju po sljedećoj naredbi:
+```bash
+groupadd alice_reading_group
+```
+Posljednje što smo radili je proučavali kako kontrola pristupa gleda na programe koji se izvode.
+Unutar python smo kreirali sljedeći program tj. skriptu:
+```python
+import os
+
+print('Real (R), effective (E) and saved (S) UIDs:') 
+print(os.getresuid())
+
+with open('/home/alice/srp/security.txt', 'r') as f:
+    print(f.read())
+```
+Prije ovoga smo provjerili da korisnik Bob ima pristup datoteci security.txt te da korisnik student nema pravo pristupa.
+Nakon toga smo probali pokreniti skriptu kao student te i dalje nismo mogli pristupi datoteci security.txt. Kad smo istu skriptu probali pokrenuti kao korisnik Bob dobili smo pristup security.txt. Ovo se dogodilo jer za pristup datoteci se gleda id korisnika te ima li taj korisnik pristup datoteci, a ne tko je kreirao skriptu.
